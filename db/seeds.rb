@@ -46,18 +46,18 @@ puts "There are now #{User.count} users"
 
 
 
-reservations = [[2, 1, "2017-5-10", "11:00", "The food is great!", 5, false],
-                [2, 2, "2017-5-12", "16:00", "Awesome!", 10, false]]
+reservations_data = [["2017-5-10", "11:00", "The food is great!", 5, false],
+                     ["2017-5-12", "16:00", "Awesome!", 10, false]]
 Reservation.delete_all
-reservations.each do |entry|
+reservations_data.each do |entry|
   reservation = Reservation.new
-  reservation.user_id = entry[0]
-  reservation.restaurant_id = entry[1]
-  reservation.date = entry[2]
-  reservation.time = entry[3]
-  reservation.review = entry[4]
-  reservation.points = entry[5]
-  reservation.canceled = entry[6]
+  reservation.user_id = User.sample.id
+  reservation.restaurant_id = Restaurant.sample.id
+  reservation.date = entry[0]
+  reservation.time = entry[1]
+  reservation.review = entry[2]
+  reservation.points = entry[3]
+  reservation.canceled = entry[4]
   reservation.save
 end
 
