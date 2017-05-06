@@ -1,5 +1,11 @@
 # MPCS 52553 - Final Project Starting Point
 
+### Description
+I choose TinyTable as my final project. This is my guess for the domain model.
+
+<hr>
+
+
 * Download the ZIP of this repository to start your project.  
 * Rename your folder to `mpcs52553-final`
 
