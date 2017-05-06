@@ -1,0 +1,1299 @@
+Started GET "/" for ::1 at 2017-05-05 20:45:30 -0500
+Processing by Rails::WelcomeController#index as HTML
+  Parameters: {"internal"=>true}
+  Rendering /Users/mengwang/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/railties-5.0.2/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/mengwang/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/railties-5.0.2/lib/rails/templates/rails/welcome/index.html.erb (6.8ms)
+Completed 200 OK in 40ms (Views: 19.8ms | ActiveRecord: 0.0ms)
+
+
+  [1m[35m (1.6ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", 2017-05-06 01:51:51 UTC], ["updated_at", 2017-05-06 01:51:51 UTC]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (1.7ms)[0m  [1m[35mCREATE TABLE "restaurants" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL)[0m
+  [1m[35m (1.7ms)[0m  [1m[35mALTER TABLE "restaurants" ADD "name" text[0m
+  [1m[35m (1.1ms)[0m  [1m[35mALTER TABLE "restaurants" ADD "city" text[0m
+  [1m[35m (1.0ms)[0m  [1m[35mALTER TABLE "restaurants" ADD "address" text[0m
+  [1m[35m (1.1ms)[0m  [1m[35mALTER TABLE "restaurants" ADD "food_style" text[0m
+  [1m[35m (1.0ms)[0m  [1m[35mALTER TABLE "restaurants" ADD "dining_style" text[0m
+  [1m[35m (1.2ms)[0m  [1m[35mALTER TABLE "restaurants" ADD "cuisines" text[0m
+  [1m[35m (1.0ms)[0m  [1m[35mALTER TABLE "restaurants" ADD "price_range" text[0m
+  [1m[35m (1.0ms)[0m  [1m[35mALTER TABLE "restaurants" ADD "phone_number" text[0m
+  [1m[35m (1.3ms)[0m  [1m[35mALTER TABLE "restaurants" ADD "website" text[0m
+  [1m[35m (1.7ms)[0m  [1m[35mALTER TABLE "restaurants" ADD "description" text[0m
+  [1m[35m (1.2ms)[0m  [1m[35mALTER TABLE "restaurants" ADD "photo_url" text[0m
+  [1m[35m (1.6ms)[0m  [1m[35mALTER TABLE "restaurants" ADD "number_of_tables" integer[0m
+  [1m[35m (1.5ms)[0m  [1m[35mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL)[0m
+  [1m[35m (1.7ms)[0m  [1m[35mALTER TABLE "users" ADD "username" text[0m
+  [1m[35m (1.4ms)[0m  [1m[35mALTER TABLE "users" ADD "password" text[0m
+  [1m[35m (2.0ms)[0m  [1m[35mALTER TABLE "users" ADD "first_name" text[0m
+  [1m[35m (1.0ms)[0m  [1m[35mALTER TABLE "users" ADD "last_name" text[0m
+  [1m[35m (1.1ms)[0m  [1m[35mALTER TABLE "users" ADD "email" text[0m
+  [1m[35m (1.1ms)[0m  [1m[35mALTER TABLE "users" ADD "points" integer[0m
+  [1m[35m (7.7ms)[0m  [1m[35mALTER TABLE "users" ADD "is_admin" boolean DEFAULT 'f'[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE TABLE "reservations" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL)[0m
+  [1m[35m (1.1ms)[0m  [1m[35mALTER TABLE "reservations" ADD "user_id" integer[0m
+  [1m[35m (0.2ms)[0m  [1m[34mselect sqlite_version(*)[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE  INDEX "index_reservations_on_user_id" ON "reservations" ("user_id")[0m
+  [1m[35m (1.0ms)[0m  [1m[35mALTER TABLE "reservations" ADD "restaurant_id" integer[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_reservations_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_reservations_on_user_id' AND type='index'
+[0m
+  [1m[35m (1.8ms)[0m  [1m[35mCREATE  INDEX "index_reservations_on_restaurant_id" ON "reservations" ("restaurant_id")[0m
+  [1m[35m (3.2ms)[0m  [1m[35mALTER TABLE "reservations" ADD "date" text[0m
+  [1m[35m (1.5ms)[0m  [1m[35mALTER TABLE "reservations" ADD "time" text[0m
+  [1m[35m (1.5ms)[0m  [1m[35mALTER TABLE "reservations" ADD "review" text[0m
+  [1m[35m (1.2ms)[0m  [1m[35mALTER TABLE "reservations" ADD "points" integer[0m
+  [1m[35m (1.6ms)[0m  [1m[35mALTER TABLE "reservations" ADD "canceled" boolean DEFAULT 'f'[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_reservations_on_restaurant_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_reservations_on_restaurant_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_reservations_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_reservations_on_user_id' AND type='index'
+[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.9ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_reservations_on_restaurant_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_reservations_on_restaurant_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_reservations_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_reservations_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TEMPORARY TABLE "arestaurants" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" text, "city" text, "address" text, "food_style" text, "dining_style" text, "cuisines" text, "price_range" text, "phone_number" text, "website" text, "description" text, "photo_url" text, "number_of_tables" integer)[0m
+  [1m[35m (0.5ms)[0m  [1m[32mINSERT INTO "arestaurants" ("id","name","city","address","food_style","dining_style","cuisines","price_range","phone_number","website","description","photo_url","number_of_tables")
+                     SELECT "id","name","city","address","food_style","dining_style","cuisines","price_range","phone_number","website","description","photo_url","number_of_tables" FROM "restaurants"[0m
+  [1m[35m (1.3ms)[0m  [1m[35mDROP TABLE "restaurants"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "restaurants" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" text, "city" text, "address" text, "food_style" text, "dining_style" text, "cuisines" text, "price_range" text, "phone_number" text, "website" text, "description" text, "photo_url" text, "number_of_tables" integer DEFAULT 0)[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "restaurants" ("id","name","city","address","food_style","dining_style","cuisines","price_range","phone_number","website","description","photo_url","number_of_tables")
+                     SELECT "id","name","city","address","food_style","dining_style","cuisines","price_range","phone_number","website","description","photo_url","number_of_tables" FROM "arestaurants"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "arestaurants"[0m
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TEMPORARY TABLE "ausers" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "username" text, "password" text, "first_name" text, "last_name" text, "email" text, "points" integer, "is_admin" boolean DEFAULT 'f')[0m
+  [1m[35m (0.3ms)[0m  [1m[32mINSERT INTO "ausers" ("id","username","password","first_name","last_name","email","points","is_admin")
+                     SELECT "id","username","password","first_name","last_name","email","points","is_admin" FROM "users"[0m
+  [1m[35m (0.6ms)[0m  [1m[35mDROP TABLE "users"[0m
+  [1m[35m (2.2ms)[0m  [1m[35mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "username" text, "password" text, "first_name" text, "last_name" text, "email" text, "points" integer DEFAULT 0, "is_admin" boolean DEFAULT 'f')[0m
+  [1m[35m (0.2ms)[0m  [1m[32mINSERT INTO "users" ("id","username","password","first_name","last_name","email","points","is_admin")
+                     SELECT "id","username","password","first_name","last_name","email","points","is_admin" FROM "ausers"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE "ausers"[0m
+  [1m[35m (1.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TEMPORARY TABLE "ausers" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "username" text, "password" text, "first_name" text, "last_name" text, "email" text, "points" integer DEFAULT 0, "is_admin" boolean DEFAULT 'f')[0m
+  [1m[35m (1.0ms)[0m  [1m[32mINSERT INTO "ausers" ("id","username","password","first_name","last_name","email","points","is_admin")
+                     SELECT "id","username","password","first_name","last_name","email","points","is_admin" FROM "users"[0m
+  [1m[35m (0.7ms)[0m  [1m[35mDROP TABLE "users"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "username" text, "password" text, "first_name" text, "last_name" text, "email" text, "points" integer DEFAULT 0, "is_admin" boolean DEFAULT 'f')[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "users" ("id","username","password","first_name","last_name","email","points","is_admin")
+                     SELECT "id","username","password","first_name","last_name","email","points","is_admin" FROM "ausers"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "ausers"[0m
+  [1m[35m (1.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TEMPORARY TABLE "areservations" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "restaurant_id" integer, "date" text, "time" text, "review" text, "points" integer, "canceled" boolean DEFAULT 'f')[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_reservations_on_restaurant_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_reservations_on_restaurant_id' AND type='index'
+[0m
+  [1m[35m (0.2ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_reservations_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_reservations_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.2ms)[0m  [1m[34mselect sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE  INDEX "tindex_areservations_on_restaurant_id" ON "areservations" ("restaurant_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE  INDEX "tindex_areservations_on_user_id" ON "areservations" ("user_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[32mINSERT INTO "areservations" ("id","user_id","restaurant_id","date","time","review","points","canceled")
+                     SELECT "id","user_id","restaurant_id","date","time","review","points","canceled" FROM "reservations"[0m
+  [1m[35m (0.6ms)[0m  [1m[35mDROP TABLE "reservations"[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TABLE "reservations" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "restaurant_id" integer, "date" text, "time" text, "review" text, "points" integer DEFAULT 0, "canceled" boolean DEFAULT 'f')[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='tindex_areservations_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='tindex_areservations_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='tindex_areservations_on_restaurant_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='tindex_areservations_on_restaurant_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_reservations_on_user_id" ON "reservations" ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_reservations_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_reservations_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE  INDEX "index_reservations_on_restaurant_id" ON "reservations" ("restaurant_id")[0m
+  [1m[35m (0.4ms)[0m  [1m[32mINSERT INTO "reservations" ("id","user_id","restaurant_id","date","time","review","points","canceled")
+                     SELECT "id","user_id","restaurant_id","date","time","review","points","canceled" FROM "areservations"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE "areservations"[0m
+  [1m[35m (1.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "areservations" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "restaurant_id" integer, "date" text, "time" text, "review" text, "points" integer DEFAULT 0, "canceled" boolean DEFAULT 'f')[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_reservations_on_restaurant_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_reservations_on_restaurant_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_reservations_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_reservations_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "tindex_areservations_on_restaurant_id" ON "areservations" ("restaurant_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "tindex_areservations_on_user_id" ON "areservations" ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "areservations" ("id","user_id","restaurant_id","date","time","review","points","canceled")
+                     SELECT "id","user_id","restaurant_id","date","time","review","points","canceled" FROM "reservations"[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE "reservations"[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TABLE "reservations" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "restaurant_id" integer, "date" text, "time" text, "review" text, "points" integer DEFAULT 0, "canceled" boolean DEFAULT 'f')[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='tindex_areservations_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='tindex_areservations_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.5ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='tindex_areservations_on_restaurant_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='tindex_areservations_on_restaurant_id' AND type='index'
+[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE  INDEX "index_reservations_on_user_id" ON "reservations" ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_reservations_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_reservations_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_reservations_on_restaurant_id" ON "reservations" ("restaurant_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[32mINSERT INTO "reservations" ("id","user_id","restaurant_id","date","time","review","points","canceled")
+                     SELECT "id","user_id","restaurant_id","date","time","review","points","canceled" FROM "areservations"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE "areservations"[0m
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_reservations_on_restaurant_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_reservations_on_restaurant_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_reservations_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_reservations_on_user_id' AND type='index'
+[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_reservations_on_restaurant_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_reservations_on_restaurant_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_reservations_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_reservations_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TEMPORARY TABLE "arestaurants" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" text, "city" text, "address" text, "food_style" text, "dining_style" text, "cuisines" text, "price_range" text, "phone_number" text, "website" text, "description" text, "photo_url" text, "number_of_tables" integer DEFAULT 0)[0m
+  [1m[35m (0.6ms)[0m  [1m[32mINSERT INTO "arestaurants" ("id","name","city","address","food_style","dining_style","cuisines","price_range","phone_number","website","description","photo_url","number_of_tables")
+                     SELECT "id","name","city","address","food_style","dining_style","cuisines","price_range","phone_number","website","description","photo_url","number_of_tables" FROM "restaurants"[0m
+  [1m[35m (0.9ms)[0m  [1m[35mDROP TABLE "restaurants"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "restaurants" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" text, "city" text, "address" text, "food_style" text, "dining_style" text, "cuisines" text, "price_range" text, "phone_number" text, "website" text, "description" text, "photo_url" text, "number_of_tables" integer DEFAULT 0)[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "restaurants" ("id","name","city","address","food_style","dining_style","cuisines","price_range","phone_number","website","description","photo_url","number_of_tables")
+                     SELECT "id","name","city","address","food_style","dining_style","cuisines","price_range","phone_number","website","description","photo_url","number_of_tables" FROM "arestaurants"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "arestaurants"[0m
+  [1m[35m (1.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TEMPORARY TABLE "ausers" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "username" text, "password" text, "first_name" text, "last_name" text, "email" text, "points" integer DEFAULT 0, "is_admin" boolean DEFAULT 'f')[0m
+  [1m[35m (0.2ms)[0m  [1m[32mINSERT INTO "ausers" ("id","username","password","first_name","last_name","email","points","is_admin")
+                     SELECT "id","username","password","first_name","last_name","email","points","is_admin" FROM "users"[0m
+  [1m[35m (0.5ms)[0m  [1m[35mDROP TABLE "users"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "username" text, "password" text, "first_name" text, "last_name" text, "email" text, "points" integer DEFAULT 0, "is_admin" boolean DEFAULT 'f')[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "users" ("id","username","password","first_name","last_name","email","points","is_admin")
+                     SELECT "id","username","password","first_name","last_name","email","points","is_admin" FROM "ausers"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "ausers"[0m
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TEMPORARY TABLE "ausers" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "username" text, "password" text, "first_name" text, "last_name" text, "email" text, "points" integer DEFAULT 0, "is_admin" boolean DEFAULT 'f')[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "ausers" ("id","username","password","first_name","last_name","email","points","is_admin")
+                     SELECT "id","username","password","first_name","last_name","email","points","is_admin" FROM "users"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE "users"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "username" text, "password" text, "first_name" text, "last_name" text, "email" text, "points" integer DEFAULT 0, "is_admin" boolean DEFAULT 'f')[0m
+  [1m[35m (0.2ms)[0m  [1m[32mINSERT INTO "users" ("id","username","password","first_name","last_name","email","points","is_admin")
+                     SELECT "id","username","password","first_name","last_name","email","points","is_admin" FROM "ausers"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE "ausers"[0m
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TEMPORARY TABLE "areservations" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "restaurant_id" integer, "date" text, "time" text, "review" text, "points" integer DEFAULT 0, "canceled" boolean DEFAULT 'f')[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_reservations_on_restaurant_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_reservations_on_restaurant_id' AND type='index'
+[0m
+  [1m[35m (0.2ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_reservations_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_reservations_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34mselect sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE  INDEX "tindex_areservations_on_restaurant_id" ON "areservations" ("restaurant_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "tindex_areservations_on_user_id" ON "areservations" ("user_id")[0m
+  [1m[35m (0.6ms)[0m  [1m[32mINSERT INTO "areservations" ("id","user_id","restaurant_id","date","time","review","points","canceled")
+                     SELECT "id","user_id","restaurant_id","date","time","review","points","canceled" FROM "reservations"[0m
+  [1m[35m (0.7ms)[0m  [1m[35mDROP TABLE "reservations"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TABLE "reservations" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "restaurant_id" integer, "date" text, "time" text, "review" text, "points" integer DEFAULT 0, "canceled" boolean DEFAULT 'f')[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='tindex_areservations_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='tindex_areservations_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.9ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='tindex_areservations_on_restaurant_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='tindex_areservations_on_restaurant_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_reservations_on_user_id" ON "reservations" ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_reservations_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_reservations_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE  INDEX "index_reservations_on_restaurant_id" ON "reservations" ("restaurant_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[32mINSERT INTO "reservations" ("id","user_id","restaurant_id","date","time","review","points","canceled")
+                     SELECT "id","user_id","restaurant_id","date","time","review","points","canceled" FROM "areservations"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "areservations"[0m
+  [1m[35m (1.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TEMPORARY TABLE "areservations" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "restaurant_id" integer, "date" text, "time" text, "review" text, "points" integer DEFAULT 0, "canceled" boolean DEFAULT 'f')[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_reservations_on_restaurant_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_reservations_on_restaurant_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_reservations_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_reservations_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE  INDEX "tindex_areservations_on_restaurant_id" ON "areservations" ("restaurant_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE  INDEX "tindex_areservations_on_user_id" ON "areservations" ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "areservations" ("id","user_id","restaurant_id","date","time","review","points","canceled")
+                     SELECT "id","user_id","restaurant_id","date","time","review","points","canceled" FROM "reservations"[0m
+  [1m[35m (1.1ms)[0m  [1m[35mDROP TABLE "reservations"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "reservations" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "restaurant_id" integer, "date" text, "time" text, "review" text, "points" integer DEFAULT 0, "canceled" boolean DEFAULT 'f')[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='tindex_areservations_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='tindex_areservations_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='tindex_areservations_on_restaurant_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='tindex_areservations_on_restaurant_id' AND type='index'
+[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE  INDEX "index_reservations_on_user_id" ON "reservations" ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_reservations_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_reservations_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE  INDEX "index_reservations_on_restaurant_id" ON "reservations" ("restaurant_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[32mINSERT INTO "reservations" ("id","user_id","restaurant_id","date","time","review","points","canceled")
+                     SELECT "id","user_id","restaurant_id","date","time","review","points","canceled" FROM "areservations"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "areservations"[0m
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TEMPORARY TABLE "arestaurants" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" text, "city" text, "address" text, "food_style" text, "dining_style" text, "cuisines" text, "price_range" text, "phone_number" text, "website" text, "description" text, "photo_url" text, "number_of_tables" integer DEFAULT 0)[0m
+  [1m[35m (0.2ms)[0m  [1m[32mINSERT INTO "arestaurants" ("id","name","city","address","food_style","dining_style","cuisines","price_range","phone_number","website","description","photo_url","number_of_tables")
+                     SELECT "id","name","city","address","food_style","dining_style","cuisines","price_range","phone_number","website","description","photo_url","number_of_tables" FROM "restaurants"[0m
+  [1m[35m (0.6ms)[0m  [1m[35mDROP TABLE "restaurants"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TABLE "restaurants" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" text, "city" text, "address" text, "dining_style" text, "cuisines" text, "price_range" text, "phone_number" text, "website" text, "description" text, "photo_url" text, "number_of_tables" integer DEFAULT 0)[0m
+  [1m[35m (0.2ms)[0m  [1m[32mINSERT INTO "restaurants" ("id","name","city","address","dining_style","cuisines","price_range","phone_number","website","description","photo_url","number_of_tables")
+                     SELECT "id","name","city","address","dining_style","cuisines","price_range","phone_number","website","description","photo_url","number_of_tables" FROM "arestaurants"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE "arestaurants"[0m
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_reservations_on_restaurant_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_reservations_on_restaurant_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_reservations_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_reservations_on_user_id' AND type='index'
+[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.8ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_reservations_on_restaurant_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_reservations_on_restaurant_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_reservations_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_reservations_on_user_id' AND type='index'
+[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mSQL (1.5ms)[0m  [1m[31mDELETE FROM "restaurants"[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.9ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "city", "address", "dining_style", "cuisines", "price_range", "phone_number", "website", "description", "photo_url", "number_of_tables") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Monteverde"], ["city", "Chicago"], ["address", "1020 W. Madison Chicago, IL 60607"], ["dining_style", "Casual Dining"], ["cuisines", "Italian"], ["price_range", "$30 and under"], ["phone_number", "(312) 888-3041"], ["website", "http://monteverdechicago.com/"], ["description", "Located in Chicago’s West Loop neighborhood, Monteverde is an Italian restaurant that blends the traditions of Italian culture and cooking with influences from Chef Sarah Grueneberg’s trips around the world, as well as her family heritage. Cooking with a traditional heart and a modern hand, Monteverde offers food that is soulful, surprising and filled with storytelling."], ["photo_url", "https://resizer.otstatic.com/v2/photos/large/24386856.jpg"], ["number_of_tables", 10]]
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "restaurants"[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "users" ("username", "password", "first_name", "last_name", "email", "points", "is_admin") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["username", "mengwang"], ["password", "mengwang"], ["first_name", "Meng"], ["last_name", "Wang"], ["email", "mengwanguc@gmail.com"], ["points", 100], ["is_admin", true]]
+  [1m[35m (5.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "users" ("username", "password", "first_name", "last_name", "email", "points") VALUES (?, ?, ?, ?, ?, ?)[0m  [["username", "userX"], ["password", "userX"], ["first_name", "Jack"], ["last_name", "Chen"], ["email", "guest@gmail.com"], ["points", 50]]
+  [1m[35m (1.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "users"[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "reservations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mSQL (1.2ms)[0m  [1m[31mDELETE FROM "restaurants"[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "city", "address", "dining_style", "cuisines", "price_range", "phone_number", "website", "description", "photo_url", "number_of_tables") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Monteverde"], ["city", "Chicago"], ["address", "1020 W. Madison Chicago, IL 60607"], ["dining_style", "Casual Dining"], ["cuisines", "Italian"], ["price_range", "$30 and under"], ["phone_number", "(312) 888-3041"], ["website", "http://monteverdechicago.com/"], ["description", "Located in Chicago’s West Loop neighborhood, Monteverde is an Italian restaurant that blends the traditions of Italian culture and cooking with influences from Chef Sarah Grueneberg’s trips around the world, as well as her family heritage. Cooking with a traditional heart and a modern hand, Monteverde offers food that is soulful, surprising and filled with storytelling."], ["photo_url", "https://resizer.otstatic.com/v2/photos/large/24386856.jpg"], ["number_of_tables", 10]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "restaurants"[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "users" ("username", "password", "first_name", "last_name", "email", "points", "is_admin") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["username", "mengwang"], ["password", "mengwang"], ["first_name", "Meng"], ["last_name", "Wang"], ["email", "mengwanguc@gmail.com"], ["points", 100], ["is_admin", true]]
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "users" ("username", "password", "first_name", "last_name", "email", "points") VALUES (?, ?, ?, ?, ?, ?)[0m  [["username", "userX"], ["password", "userX"], ["first_name", "Jack"], ["last_name", "Chen"], ["email", "guest@gmail.com"], ["points", 50]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "users"[0m
+  [1m[35m (0.8ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRestaurant Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "restaurants" WHERE "restaurants"."id" = ? LIMIT ?[0m  [["id", 0], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRestaurant Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "restaurants" WHERE "restaurants"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "reservations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mSQL (1.7ms)[0m  [1m[31mDELETE FROM "restaurants"[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "city", "address", "dining_style", "cuisines", "price_range", "phone_number", "website", "description", "photo_url", "number_of_tables") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Monteverde"], ["city", "Chicago"], ["address", "1020 W. Madison Chicago, IL 60607"], ["dining_style", "Casual Dining"], ["cuisines", "Italian"], ["price_range", "$30 and under"], ["phone_number", "(312) 888-3041"], ["website", "http://monteverdechicago.com/"], ["description", "Located in Chicago’s West Loop neighborhood, Monteverde is an Italian restaurant that blends the traditions of Italian culture and cooking with influences from Chef Sarah Grueneberg’s trips around the world, as well as her family heritage. Cooking with a traditional heart and a modern hand, Monteverde offers food that is soulful, surprising and filled with storytelling."], ["photo_url", "https://resizer.otstatic.com/v2/photos/large/24386856.jpg"], ["number_of_tables", 10]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "restaurants"[0m
+  [1m[35mSQL (1.6ms)[0m  [1m[31mDELETE FROM "users"[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "users" ("username", "password", "first_name", "last_name", "email", "points", "is_admin") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["username", "mengwang"], ["password", "mengwang"], ["first_name", "Meng"], ["last_name", "Wang"], ["email", "mengwanguc@gmail.com"], ["points", 100], ["is_admin", true]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "users" ("username", "password", "first_name", "last_name", "email", "points") VALUES (?, ?, ?, ?, ?, ?)[0m  [["username", "userX"], ["password", "userX"], ["first_name", "Jack"], ["last_name", "Chen"], ["email", "guest@gmail.com"], ["points", 50]]
+  [1m[35m (1.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "users"[0m
+  [1m[35mSQL (1.7ms)[0m  [1m[31mDELETE FROM "reservations"[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRestaurant Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "restaurants" WHERE "restaurants"."id" = ? LIMIT ?[0m  [["id", 0], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRestaurant Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "restaurants" WHERE "restaurants"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "reservations"[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TEMPORARY TABLE "arestaurants" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" text, "city" text, "address" text, "dining_style" text, "cuisines" text, "price_range" text, "phone_number" text, "website" text, "description" text, "photo_url" text, "number_of_tables" integer DEFAULT 0)[0m
+  [1m[35m (0.5ms)[0m  [1m[32mINSERT INTO "arestaurants" ("id","name","city","address","dining_style","cuisines","price_range","phone_number","website","description","photo_url","number_of_tables")
+                     SELECT "id","name","city","address","dining_style","cuisines","price_range","phone_number","website","description","photo_url","number_of_tables" FROM "restaurants"[0m
+  [1m[35m (0.9ms)[0m  [1m[35mDROP TABLE "restaurants"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "restaurants" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" text, "city" text, "address" text, "dining_style" text, "cuisines" text, "price_range" text, "phone_number" text, "website" text, "description" text, "photo_url" text, "number_of_tables" integer DEFAULT 0)[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "restaurants" ("id","name","city","address","dining_style","cuisines","price_range","phone_number","website","description","photo_url","number_of_tables")
+                     SELECT "id","name","city","address","dining_style","cuisines","price_range","phone_number","website","description","photo_url","number_of_tables" FROM "arestaurants"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "arestaurants"[0m
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TEMPORARY TABLE "ausers" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "username" text, "password" text, "first_name" text, "last_name" text, "email" text, "points" integer DEFAULT 0, "is_admin" boolean DEFAULT 'f')[0m
+  [1m[35m (0.2ms)[0m  [1m[32mINSERT INTO "ausers" ("id","username","password","first_name","last_name","email","points","is_admin")
+                     SELECT "id","username","password","first_name","last_name","email","points","is_admin" FROM "users"[0m
+  [1m[35m (0.8ms)[0m  [1m[35mDROP TABLE "users"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "username" text, "password" text, "first_name" text, "last_name" text, "email" text, "points" integer DEFAULT 0, "is_admin" boolean DEFAULT 'f')[0m
+  [1m[35m (0.2ms)[0m  [1m[32mINSERT INTO "users" ("id","username","password","first_name","last_name","email","points","is_admin")
+                     SELECT "id","username","password","first_name","last_name","email","points","is_admin" FROM "ausers"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "ausers"[0m
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TEMPORARY TABLE "ausers" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "username" text, "password" text, "first_name" text, "last_name" text, "email" text, "points" integer DEFAULT 0, "is_admin" boolean DEFAULT 'f')[0m
+  [1m[35m (0.2ms)[0m  [1m[32mINSERT INTO "ausers" ("id","username","password","first_name","last_name","email","points","is_admin")
+                     SELECT "id","username","password","first_name","last_name","email","points","is_admin" FROM "users"[0m
+  [1m[35m (0.5ms)[0m  [1m[35mDROP TABLE "users"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "username" text, "password" text, "first_name" text, "last_name" text, "email" text, "points" integer DEFAULT 0, "is_admin" boolean DEFAULT 'f')[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "users" ("id","username","password","first_name","last_name","email","points","is_admin")
+                     SELECT "id","username","password","first_name","last_name","email","points","is_admin" FROM "ausers"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "ausers"[0m
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TEMPORARY TABLE "areservations" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "restaurant_id" integer, "date" text, "time" text, "review" text, "points" integer DEFAULT 0, "canceled" boolean DEFAULT 'f')[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_reservations_on_restaurant_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_reservations_on_restaurant_id' AND type='index'
+[0m
+  [1m[35m (0.2ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_reservations_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_reservations_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34mselect sqlite_version(*)[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE  INDEX "tindex_areservations_on_restaurant_id" ON "areservations" ("restaurant_id")[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE  INDEX "tindex_areservations_on_user_id" ON "areservations" ("user_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[32mINSERT INTO "areservations" ("id","user_id","restaurant_id","date","time","review","points","canceled")
+                     SELECT "id","user_id","restaurant_id","date","time","review","points","canceled" FROM "reservations"[0m
+  [1m[35m (0.7ms)[0m  [1m[35mDROP TABLE "reservations"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "reservations" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "restaurant_id" integer, "date" text, "time" text, "review" text, "points" integer DEFAULT 0, "canceled" boolean DEFAULT 'f')[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='tindex_areservations_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='tindex_areservations_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='tindex_areservations_on_restaurant_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='tindex_areservations_on_restaurant_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_reservations_on_user_id" ON "reservations" ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_reservations_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_reservations_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_reservations_on_restaurant_id" ON "reservations" ("restaurant_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "reservations" ("id","user_id","restaurant_id","date","time","review","points","canceled")
+                     SELECT "id","user_id","restaurant_id","date","time","review","points","canceled" FROM "areservations"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE "areservations"[0m
+  [1m[35m (1.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE TEMPORARY TABLE "areservations" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "restaurant_id" integer, "date" text, "time" text, "review" text, "points" integer DEFAULT 0, "canceled" boolean DEFAULT 'f')[0m
+  [1m[35m (0.2ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_reservations_on_restaurant_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_reservations_on_restaurant_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_reservations_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_reservations_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "tindex_areservations_on_restaurant_id" ON "areservations" ("restaurant_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "tindex_areservations_on_user_id" ON "areservations" ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "areservations" ("id","user_id","restaurant_id","date","time","review","points","canceled")
+                     SELECT "id","user_id","restaurant_id","date","time","review","points","canceled" FROM "reservations"[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE "reservations"[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "reservations" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "restaurant_id" integer, "date" text, "time" text, "review" text, "points" integer DEFAULT 0, "canceled" boolean DEFAULT 'f')[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='tindex_areservations_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='tindex_areservations_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='tindex_areservations_on_restaurant_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='tindex_areservations_on_restaurant_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_reservations_on_user_id" ON "reservations" ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_reservations_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_reservations_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_reservations_on_restaurant_id" ON "reservations" ("restaurant_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "reservations" ("id","user_id","restaurant_id","date","time","review","points","canceled")
+                     SELECT "id","user_id","restaurant_id","date","time","review","points","canceled" FROM "areservations"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE "areservations"[0m
+  [1m[35m (1.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_reservations_on_restaurant_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_reservations_on_restaurant_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_reservations_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_reservations_on_user_id' AND type='index'
+[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_reservations_on_restaurant_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_reservations_on_restaurant_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_reservations_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_reservations_on_user_id' AND type='index'
+[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mSQL (1.5ms)[0m  [1m[31mDELETE FROM "restaurants"[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "city", "address", "dining_style", "cuisines", "price_range", "phone_number", "website", "description", "photo_url", "number_of_tables") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Monteverde"], ["city", "Chicago"], ["address", "1020 W. Madison Chicago, IL 60607"], ["dining_style", "Casual Dining"], ["cuisines", "Italian"], ["price_range", "$30 and under"], ["phone_number", "(312) 888-3041"], ["website", "http://monteverdechicago.com/"], ["description", "Located in Chicago’s West Loop neighborhood, Monteverde is an Italian restaurant that blends the traditions of Italian culture and cooking with influences from Chef Sarah Grueneberg’s trips around the world, as well as her family heritage. Cooking with a traditional heart and a modern hand, Monteverde offers food that is soulful, surprising and filled with storytelling."], ["photo_url", "https://resizer.otstatic.com/v2/photos/large/24386856.jpg"], ["number_of_tables", 10]]
+  [1m[35m (1.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "city", "address", "dining_style", "cuisines", "price_range", "phone_number", "website", "description", "photo_url", "number_of_tables") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Riccardo Trattoria"], ["city", "Chicago"], ["address", "2119 N. Clark Street Chicago, IL 60614"], ["dining_style", "Casual Dining"], ["cuisines", "Italian"], ["price_range", "$30 and under"], ["phone_number", "(773) 549-0038"], ["website", "http://www.riccardotrattoria.com/index.htm"], ["description", "Riccardo started his career at a very young age in Milan's prestigious \"GIRARROSTO\" family owned. Then, in 1982 he moved to the United States and he opened the famous Sonny Bono's in Los Angeles. In 1987 he started to work with his cousin Roberto Ruggeri (owner of Bice's Venture), with him he opened Bice New York, Los Angeles and many others around the world."], ["photo_url", "https://ot-foodspotting-production.s3.amazonaws.com/reviews/91289/thumb_600.jpg"], ["number_of_tables", 8]]
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "restaurants"[0m
+  [1m[35mSQL (1.2ms)[0m  [1m[31mDELETE FROM "users"[0m
+  [1m[35m (0.9ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.4ms)[0m  [1m[32mINSERT INTO "users" ("username", "password", "first_name", "last_name", "email", "points", "is_admin") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["username", "mengwang"], ["password", "mengwang"], ["first_name", "Meng"], ["last_name", "Wang"], ["email", "mengwanguc@gmail.com"], ["points", 100], ["is_admin", true]]
+  [1m[35m (1.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "users" ("username", "password", "first_name", "last_name", "email", "points") VALUES (?, ?, ?, ?, ?, ?)[0m  [["username", "userX"], ["password", "userX"], ["first_name", "Jack"], ["last_name", "Chen"], ["email", "guest@gmail.com"], ["points", 50]]
+  [1m[35m (1.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "users"[0m
+  [1m[35mSQL (1.1ms)[0m  [1m[31mDELETE FROM "reservations"[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRestaurant Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "restaurants" WHERE "restaurants"."id" = ? LIMIT ?[0m  [["id", 0], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRestaurant Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "restaurants" WHERE "restaurants"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "reservations"[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TEMPORARY TABLE "arestaurants" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" text, "city" text, "address" text, "dining_style" text, "cuisines" text, "price_range" text, "phone_number" text, "website" text, "description" text, "photo_url" text, "number_of_tables" integer DEFAULT 0)[0m
+  [1m[35m (0.5ms)[0m  [1m[32mINSERT INTO "arestaurants" ("id","name","city","address","dining_style","cuisines","price_range","phone_number","website","description","photo_url","number_of_tables")
+                     SELECT "id","name","city","address","dining_style","cuisines","price_range","phone_number","website","description","photo_url","number_of_tables" FROM "restaurants"[0m
+  [1m[35m (1.7ms)[0m  [1m[35mDROP TABLE "restaurants"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "restaurants" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" text, "city" text, "address" text, "dining_style" text, "cuisines" text, "price_range" text, "phone_number" text, "website" text, "description" text, "photo_url" text, "number_of_tables" integer DEFAULT 0)[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "restaurants" ("id","name","city","address","dining_style","cuisines","price_range","phone_number","website","description","photo_url","number_of_tables")
+                     SELECT "id","name","city","address","dining_style","cuisines","price_range","phone_number","website","description","photo_url","number_of_tables" FROM "arestaurants"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "arestaurants"[0m
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (2.4ms)[0m  [1m[35mCREATE TEMPORARY TABLE "ausers" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "username" text, "password" text, "first_name" text, "last_name" text, "email" text, "points" integer DEFAULT 0, "is_admin" boolean DEFAULT 'f')[0m
+  [1m[35m (0.2ms)[0m  [1m[32mINSERT INTO "ausers" ("id","username","password","first_name","last_name","email","points","is_admin")
+                     SELECT "id","username","password","first_name","last_name","email","points","is_admin" FROM "users"[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE "users"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "username" text, "password" text, "first_name" text, "last_name" text, "email" text, "points" integer DEFAULT 0, "is_admin" boolean DEFAULT 'f')[0m
+  [1m[35m (0.2ms)[0m  [1m[32mINSERT INTO "users" ("id","username","password","first_name","last_name","email","points","is_admin")
+                     SELECT "id","username","password","first_name","last_name","email","points","is_admin" FROM "ausers"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE "ausers"[0m
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TEMPORARY TABLE "ausers" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "username" text, "password" text, "first_name" text, "last_name" text, "email" text, "points" integer DEFAULT 0, "is_admin" boolean DEFAULT 'f')[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "ausers" ("id","username","password","first_name","last_name","email","points","is_admin")
+                     SELECT "id","username","password","first_name","last_name","email","points","is_admin" FROM "users"[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE "users"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "username" text, "password" text, "first_name" text, "last_name" text, "email" text, "points" integer DEFAULT 0, "is_admin" boolean DEFAULT 'f')[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "users" ("id","username","password","first_name","last_name","email","points","is_admin")
+                     SELECT "id","username","password","first_name","last_name","email","points","is_admin" FROM "ausers"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE "ausers"[0m
+  [1m[35m (1.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TEMPORARY TABLE "areservations" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "restaurant_id" integer, "date" text, "time" text, "review" text, "points" integer DEFAULT 0, "canceled" boolean DEFAULT 'f')[0m
+  [1m[35m (0.2ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_reservations_on_restaurant_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_reservations_on_restaurant_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_reservations_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_reservations_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34mselect sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE  INDEX "tindex_areservations_on_restaurant_id" ON "areservations" ("restaurant_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "tindex_areservations_on_user_id" ON "areservations" ("user_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[32mINSERT INTO "areservations" ("id","user_id","restaurant_id","date","time","review","points","canceled")
+                     SELECT "id","user_id","restaurant_id","date","time","review","points","canceled" FROM "reservations"[0m
+  [1m[35m (0.5ms)[0m  [1m[35mDROP TABLE "reservations"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TABLE "reservations" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "restaurant_id" integer, "date" text, "time" text, "review" text, "points" integer DEFAULT 0, "canceled" boolean DEFAULT 'f')[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='tindex_areservations_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='tindex_areservations_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='tindex_areservations_on_restaurant_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='tindex_areservations_on_restaurant_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_reservations_on_user_id" ON "reservations" ("user_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_reservations_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_reservations_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_reservations_on_restaurant_id" ON "reservations" ("restaurant_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "reservations" ("id","user_id","restaurant_id","date","time","review","points","canceled")
+                     SELECT "id","user_id","restaurant_id","date","time","review","points","canceled" FROM "areservations"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "areservations"[0m
+  [1m[35m (1.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TEMPORARY TABLE "areservations" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "restaurant_id" integer, "date" text, "time" text, "review" text, "points" integer DEFAULT 0, "canceled" boolean DEFAULT 'f')[0m
+  [1m[35m (0.2ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_reservations_on_restaurant_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_reservations_on_restaurant_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_reservations_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_reservations_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "tindex_areservations_on_restaurant_id" ON "areservations" ("restaurant_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "tindex_areservations_on_user_id" ON "areservations" ("user_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[32mINSERT INTO "areservations" ("id","user_id","restaurant_id","date","time","review","points","canceled")
+                     SELECT "id","user_id","restaurant_id","date","time","review","points","canceled" FROM "reservations"[0m
+  [1m[35m (0.7ms)[0m  [1m[35mDROP TABLE "reservations"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TABLE "reservations" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "restaurant_id" integer, "date" text, "time" text, "review" text, "points" integer DEFAULT 0, "canceled" boolean DEFAULT 'f')[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='tindex_areservations_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='tindex_areservations_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='tindex_areservations_on_restaurant_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='tindex_areservations_on_restaurant_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_reservations_on_user_id" ON "reservations" ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_reservations_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_reservations_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_reservations_on_restaurant_id" ON "reservations" ("restaurant_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[32mINSERT INTO "reservations" ("id","user_id","restaurant_id","date","time","review","points","canceled")
+                     SELECT "id","user_id","restaurant_id","date","time","review","points","canceled" FROM "areservations"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "areservations"[0m
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_reservations_on_restaurant_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_reservations_on_restaurant_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_reservations_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_reservations_on_user_id' AND type='index'
+[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.9ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_reservations_on_restaurant_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_reservations_on_restaurant_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_reservations_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_reservations_on_user_id' AND type='index'
+[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mSQL (1.5ms)[0m  [1m[31mDELETE FROM "restaurants"[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "city", "address", "dining_style", "cuisines", "price_range", "phone_number", "website", "description", "photo_url", "number_of_tables") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Monteverde"], ["city", "Chicago"], ["address", "1020 W. Madison Chicago, IL 60607"], ["dining_style", "Casual Dining"], ["cuisines", "Italian"], ["price_range", "$30 and under"], ["phone_number", "(312) 888-3041"], ["website", "http://monteverdechicago.com/"], ["description", "Located in Chicago’s West Loop neighborhood, Monteverde is an Italian restaurant that blends the traditions of Italian culture and cooking with influences from Chef Sarah Grueneberg’s trips around the world, as well as her family heritage. Cooking with a traditional heart and a modern hand, Monteverde offers food that is soulful, surprising and filled with storytelling."], ["photo_url", "https://resizer.otstatic.com/v2/photos/large/24386856.jpg"], ["number_of_tables", 10]]
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "city", "address", "dining_style", "cuisines", "price_range", "phone_number", "website", "description", "photo_url", "number_of_tables") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Riccardo Trattoria"], ["city", "Chicago"], ["address", "2119 N. Clark Street Chicago, IL 60614"], ["dining_style", "Casual Dining"], ["cuisines", "Italian"], ["price_range", "$30 and under"], ["phone_number", "(773) 549-0038"], ["website", "http://www.riccardotrattoria.com/index.htm"], ["description", "Riccardo started his career at a very young age in Milan's prestigious \"GIRARROSTO\" family owned. Then, in 1982 he moved to the United States and he opened the famous Sonny Bono's in Los Angeles. In 1987 he started to work with his cousin Roberto Ruggeri (owner of Bice's Venture), with him he opened Bice New York, Los Angeles and many others around the world."], ["photo_url", "https://ot-foodspotting-production.s3.amazonaws.com/reviews/91289/thumb_600.jpg"], ["number_of_tables", 8]]
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "restaurants"[0m
+  [1m[35mSQL (1.1ms)[0m  [1m[31mDELETE FROM "users"[0m
+  [1m[35m (0.3ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "users" ("username", "password", "first_name", "last_name", "email", "points", "is_admin") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["username", "mengwang"], ["password", "mengwang"], ["first_name", "Meng"], ["last_name", "Wang"], ["email", "mengwanguc@gmail.com"], ["points", 100], ["is_admin", true]]
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "users" ("username", "password", "first_name", "last_name", "email", "points") VALUES (?, ?, ?, ?, ?, ?)[0m  [["username", "userX"], ["password", "userX"], ["first_name", "Jack"], ["last_name", "Chen"], ["email", "guest@gmail.com"], ["points", 50]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "users"[0m
+  [1m[35mSQL (1.5ms)[0m  [1m[31mDELETE FROM "reservations"[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRestaurant Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "restaurants" WHERE "restaurants"."id" = ? LIMIT ?[0m  [["id", 0], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRestaurant Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "restaurants" WHERE "restaurants"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "reservations"[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TEMPORARY TABLE "arestaurants" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" text, "city" text, "address" text, "dining_style" text, "cuisines" text, "price_range" text, "phone_number" text, "website" text, "description" text, "photo_url" text, "number_of_tables" integer DEFAULT 0)[0m
+  [1m[35m (0.5ms)[0m  [1m[32mINSERT INTO "arestaurants" ("id","name","city","address","dining_style","cuisines","price_range","phone_number","website","description","photo_url","number_of_tables")
+                     SELECT "id","name","city","address","dining_style","cuisines","price_range","phone_number","website","description","photo_url","number_of_tables" FROM "restaurants"[0m
+  [1m[35m (0.7ms)[0m  [1m[35mDROP TABLE "restaurants"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "restaurants" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" text, "city" text, "address" text, "dining_style" text, "cuisines" text, "price_range" text, "phone_number" text, "website" text, "description" text, "photo_url" text, "number_of_tables" integer DEFAULT 0)[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "restaurants" ("id","name","city","address","dining_style","cuisines","price_range","phone_number","website","description","photo_url","number_of_tables")
+                     SELECT "id","name","city","address","dining_style","cuisines","price_range","phone_number","website","description","photo_url","number_of_tables" FROM "arestaurants"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "arestaurants"[0m
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TEMPORARY TABLE "ausers" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "username" text, "password" text, "first_name" text, "last_name" text, "email" text, "points" integer DEFAULT 0, "is_admin" boolean DEFAULT 'f')[0m
+  [1m[35m (0.3ms)[0m  [1m[32mINSERT INTO "ausers" ("id","username","password","first_name","last_name","email","points","is_admin")
+                     SELECT "id","username","password","first_name","last_name","email","points","is_admin" FROM "users"[0m
+  [1m[35m (0.7ms)[0m  [1m[35mDROP TABLE "users"[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "username" text, "password" text, "first_name" text, "last_name" text, "email" text, "points" integer DEFAULT 0, "is_admin" boolean DEFAULT 'f')[0m
+  [1m[35m (0.3ms)[0m  [1m[32mINSERT INTO "users" ("id","username","password","first_name","last_name","email","points","is_admin")
+                     SELECT "id","username","password","first_name","last_name","email","points","is_admin" FROM "ausers"[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE "ausers"[0m
+  [1m[35m (2.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TEMPORARY TABLE "ausers" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "username" text, "password" text, "first_name" text, "last_name" text, "email" text, "points" integer DEFAULT 0, "is_admin" boolean DEFAULT 'f')[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "ausers" ("id","username","password","first_name","last_name","email","points","is_admin")
+                     SELECT "id","username","password","first_name","last_name","email","points","is_admin" FROM "users"[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE "users"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "username" text, "password" text, "first_name" text, "last_name" text, "email" text, "points" integer DEFAULT 0, "is_admin" boolean DEFAULT 'f')[0m
+  [1m[35m (0.2ms)[0m  [1m[32mINSERT INTO "users" ("id","username","password","first_name","last_name","email","points","is_admin")
+                     SELECT "id","username","password","first_name","last_name","email","points","is_admin" FROM "ausers"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE "ausers"[0m
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TEMPORARY TABLE "areservations" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "restaurant_id" integer, "date" text, "time" text, "review" text, "points" integer DEFAULT 0, "canceled" boolean DEFAULT 'f')[0m
+  [1m[35m (0.2ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_reservations_on_restaurant_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_reservations_on_restaurant_id' AND type='index'
+[0m
+  [1m[35m (0.9ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_reservations_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_reservations_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34mselect sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE  INDEX "tindex_areservations_on_restaurant_id" ON "areservations" ("restaurant_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE  INDEX "tindex_areservations_on_user_id" ON "areservations" ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "areservations" ("id","user_id","restaurant_id","date","time","review","points","canceled")
+                     SELECT "id","user_id","restaurant_id","date","time","review","points","canceled" FROM "reservations"[0m
+  [1m[35m (0.6ms)[0m  [1m[35mDROP TABLE "reservations"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TABLE "reservations" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "restaurant_id" integer, "date" text, "time" text, "review" text, "points" integer DEFAULT 0, "canceled" boolean DEFAULT 'f')[0m
+  [1m[35m (0.2ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='tindex_areservations_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='tindex_areservations_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='tindex_areservations_on_restaurant_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='tindex_areservations_on_restaurant_id' AND type='index'
+[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE  INDEX "index_reservations_on_user_id" ON "reservations" ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_reservations_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_reservations_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE  INDEX "index_reservations_on_restaurant_id" ON "reservations" ("restaurant_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[32mINSERT INTO "reservations" ("id","user_id","restaurant_id","date","time","review","points","canceled")
+                     SELECT "id","user_id","restaurant_id","date","time","review","points","canceled" FROM "areservations"[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE "areservations"[0m
+  [1m[35m (1.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TEMPORARY TABLE "areservations" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "restaurant_id" integer, "date" text, "time" text, "review" text, "points" integer DEFAULT 0, "canceled" boolean DEFAULT 'f')[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_reservations_on_restaurant_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_reservations_on_restaurant_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_reservations_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_reservations_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "tindex_areservations_on_restaurant_id" ON "areservations" ("restaurant_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "tindex_areservations_on_user_id" ON "areservations" ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "areservations" ("id","user_id","restaurant_id","date","time","review","points","canceled")
+                     SELECT "id","user_id","restaurant_id","date","time","review","points","canceled" FROM "reservations"[0m
+  [1m[35m (0.5ms)[0m  [1m[35mDROP TABLE "reservations"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "reservations" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "restaurant_id" integer, "date" text, "time" text, "review" text, "points" integer DEFAULT 0, "canceled" boolean DEFAULT 'f')[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='tindex_areservations_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='tindex_areservations_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='tindex_areservations_on_restaurant_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='tindex_areservations_on_restaurant_id' AND type='index'
+[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE  INDEX "index_reservations_on_user_id" ON "reservations" ("user_id")[0m
+  [1m[35m (0.7ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_reservations_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_reservations_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_reservations_on_restaurant_id" ON "reservations" ("restaurant_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "reservations" ("id","user_id","restaurant_id","date","time","review","points","canceled")
+                     SELECT "id","user_id","restaurant_id","date","time","review","points","canceled" FROM "areservations"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "areservations"[0m
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_reservations_on_restaurant_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_reservations_on_restaurant_id' AND type='index'
+[0m
+  [1m[35m (0.2ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_reservations_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_reservations_on_user_id' AND type='index'
+[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_reservations_on_restaurant_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_reservations_on_restaurant_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_reservations_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_reservations_on_user_id' AND type='index'
+[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mSQL (1.9ms)[0m  [1m[31mDELETE FROM "restaurants"[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "city", "address", "dining_style", "cuisines", "price_range", "phone_number", "website", "description", "photo_url", "number_of_tables") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Monteverde"], ["city", "Chicago"], ["address", "1020 W. Madison Chicago, IL 60607"], ["dining_style", "Casual Dining"], ["cuisines", "Italian"], ["price_range", "$30 and under"], ["phone_number", "(312) 888-3041"], ["website", "http://monteverdechicago.com/"], ["description", "Located in Chicago’s West Loop neighborhood, Monteverde is an Italian restaurant that blends the traditions of Italian culture and cooking with influences from Chef Sarah Grueneberg’s trips around the world, as well as her family heritage. Cooking with a traditional heart and a modern hand, Monteverde offers food that is soulful, surprising and filled with storytelling."], ["photo_url", "https://resizer.otstatic.com/v2/photos/large/24386856.jpg"], ["number_of_tables", 10]]
+  [1m[35m (1.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "city", "address", "dining_style", "cuisines", "price_range", "phone_number", "website", "description", "photo_url", "number_of_tables") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Riccardo Trattoria"], ["city", "Chicago"], ["address", "2119 N. Clark Street Chicago, IL 60614"], ["dining_style", "Casual Dining"], ["cuisines", "Italian"], ["price_range", "$30 and under"], ["phone_number", "(773) 549-0038"], ["website", "http://www.riccardotrattoria.com/index.htm"], ["description", "Riccardo started his career at a very young age in Milan's prestigious \"GIRARROSTO\" family owned. Then, in 1982 he moved to the United States and he opened the famous Sonny Bono's in Los Angeles. In 1987 he started to work with his cousin Roberto Ruggeri (owner of Bice's Venture), with him he opened Bice New York, Los Angeles and many others around the world."], ["photo_url", "https://ot-foodspotting-production.s3.amazonaws.com/reviews/91289/thumb_600.jpg"], ["number_of_tables", 8]]
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "restaurants"[0m
+  [1m[35mSQL (1.1ms)[0m  [1m[31mDELETE FROM "users"[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "users" ("username", "password", "first_name", "last_name", "email", "points", "is_admin") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["username", "mengwang"], ["password", "mengwang"], ["first_name", "Meng"], ["last_name", "Wang"], ["email", "mengwanguc@gmail.com"], ["points", 100], ["is_admin", true]]
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (1.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "users" ("username", "password", "first_name", "last_name", "email", "points") VALUES (?, ?, ?, ?, ?, ?)[0m  [["username", "userX"], ["password", "userX"], ["first_name", "Jack"], ["last_name", "Chen"], ["email", "guest@gmail.com"], ["points", 50]]
+  [1m[35m (1.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "users"[0m
+  [1m[35mSQL (1.2ms)[0m  [1m[31mDELETE FROM "reservations"[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "reservations" ("user_id", "restaurant_id", "date", "time", "review", "points") VALUES (?, ?, ?, ?, ?, ?)[0m  [["user_id", 1], ["restaurant_id", 0], ["date", "2017-5-10"], ["time", "11:00"], ["review", "The food is great!"], ["points", 5]]
+  [1m[35m (1.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "reservations" ("user_id", "restaurant_id", "date", "time", "review", "points") VALUES (?, ?, ?, ?, ?, ?)[0m  [["user_id", 1], ["restaurant_id", 1], ["date", "2017-5-12"], ["time", "16:00"], ["review", "Awesome!"], ["points", 10]]
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "reservations"[0m
+  [1m[36mReservation Load (0.3ms)[0m  [1m[34mSELECT "reservations".* FROM "reservations"[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+DEPRECATION WARNING: Passing #original_exception is deprecated and has no effect. Exceptions will automatically capture the original exception. (called from require at bin/rails:4)
+  [1m[35m (2.0ms)[0m  [1m[35mCREATE TABLE "reservations" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "restaurant_id" integer, "date" text, "time" text, "review" text, "points" integer DEFAULT 0, "canceled" boolean DEFAULT 'f')[0m
+  [1m[35m (0.1ms)[0m  [1m[34mselect sqlite_version(*)[0m
+  [1m[35m (1.9ms)[0m  [1m[35mCREATE  INDEX "index_reservations_on_restaurant_id" ON "reservations" ("restaurant_id")[0m
+  [1m[35m (1.3ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_reservations_on_restaurant_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_reservations_on_restaurant_id' AND type='index'
+[0m
+  [1m[35m (1.6ms)[0m  [1m[35mCREATE  INDEX "index_reservations_on_user_id" ON "reservations" ("user_id")[0m
+  [1m[35m (1.9ms)[0m  [1m[35mCREATE TABLE "restaurants" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" text, "city" text, "address" text, "dining_style" text, "cuisines" text, "price_range" text, "phone_number" text, "website" text, "description" text, "photo_url" text, "number_of_tables" integer DEFAULT 0)[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "username" text, "password" text, "first_name" text, "last_name" text, "email" text, "points" integer DEFAULT 0, "is_admin" boolean DEFAULT 'f')[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (1.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (0)[0m
+  [1m[35m (1.6ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", 2017-05-06 03:48:29 UTC], ["updated_at", 2017-05-06 03:48:29 UTC]]
+  [1m[35m (1.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (1.5ms)[0m  [1m[35mCREATE TABLE "reservations" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "restaurant_id" integer, "date" text, "time" text, "review" text, "points" integer DEFAULT 0, "canceled" boolean DEFAULT 'f')[0m
+  [1m[35m (0.1ms)[0m  [1m[34mselect sqlite_version(*)[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE  INDEX "index_reservations_on_restaurant_id" ON "reservations" ("restaurant_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_reservations_on_restaurant_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_reservations_on_restaurant_id' AND type='index'
+[0m
+  [1m[35m (1.9ms)[0m  [1m[35mCREATE  INDEX "index_reservations_on_user_id" ON "reservations" ("user_id")[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE TABLE "restaurants" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" text, "city" text, "address" text, "dining_style" text, "cuisines" text, "price_range" text, "phone_number" text, "website" text, "description" text, "photo_url" text, "number_of_tables" integer DEFAULT 0)[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "username" text, "password" text, "first_name" text, "last_name" text, "email" text, "points" integer DEFAULT 0, "is_admin" boolean DEFAULT 'f')[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (1.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (0)[0m
+  [1m[35m (1.5ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", 2017-05-06 03:48:29 UTC], ["updated_at", 2017-05-06 03:48:29 UTC]]
+  [1m[35m (1.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mSQL (1.2ms)[0m  [1m[31mDELETE FROM "restaurants"[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "city", "address", "dining_style", "cuisines", "price_range", "phone_number", "website", "description", "photo_url", "number_of_tables") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Monteverde"], ["city", "Chicago"], ["address", "1020 W. Madison Chicago, IL 60607"], ["dining_style", "Casual Dining"], ["cuisines", "Italian"], ["price_range", "$30 and under"], ["phone_number", "(312) 888-3041"], ["website", "http://monteverdechicago.com/"], ["description", "Located in Chicago’s West Loop neighborhood, Monteverde is an Italian restaurant that blends the traditions of Italian culture and cooking with influences from Chef Sarah Grueneberg’s trips around the world, as well as her family heritage. Cooking with a traditional heart and a modern hand, Monteverde offers food that is soulful, surprising and filled with storytelling."], ["photo_url", "https://resizer.otstatic.com/v2/photos/large/24386856.jpg"], ["number_of_tables", 10]]
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "city", "address", "dining_style", "cuisines", "price_range", "phone_number", "website", "description", "photo_url", "number_of_tables") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Riccardo Trattoria"], ["city", "Chicago"], ["address", "2119 N. Clark Street Chicago, IL 60614"], ["dining_style", "Casual Dining"], ["cuisines", "Italian"], ["price_range", "$30 and under"], ["phone_number", "(773) 549-0038"], ["website", "http://www.riccardotrattoria.com/index.htm"], ["description", "Riccardo started his career at a very young age in Milan's prestigious \"GIRARROSTO\" family owned. Then, in 1982 he moved to the United States and he opened the famous Sonny Bono's in Los Angeles. In 1987 he started to work with his cousin Roberto Ruggeri (owner of Bice's Venture), with him he opened Bice New York, Los Angeles and many others around the world."], ["photo_url", "https://ot-foodspotting-production.s3.amazonaws.com/reviews/91289/thumb_600.jpg"], ["number_of_tables", 8]]
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "restaurants"[0m
+  [1m[35mSQL (1.3ms)[0m  [1m[31mDELETE FROM "users"[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "users" ("username", "password", "first_name", "last_name", "email", "points", "is_admin") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["username", "mengwang"], ["password", "mengwang"], ["first_name", "Meng"], ["last_name", "Wang"], ["email", "mengwanguc@gmail.com"], ["points", 100], ["is_admin", true]]
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "users" ("username", "password", "first_name", "last_name", "email", "points") VALUES (?, ?, ?, ?, ?, ?)[0m  [["username", "userX"], ["password", "userX"], ["first_name", "Jack"], ["last_name", "Chen"], ["email", "guest@gmail.com"], ["points", 50]]
+  [1m[35m (1.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "users"[0m
+  [1m[35mSQL (1.2ms)[0m  [1m[31mDELETE FROM "reservations"[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRestaurant Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "restaurants" WHERE "restaurants"."id" = ? LIMIT ?[0m  [["id", 0], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRestaurant Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "restaurants" WHERE "restaurants"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "reservations" ("user_id", "restaurant_id", "date", "time", "review", "points") VALUES (?, ?, ?, ?, ?, ?)[0m  [["user_id", 1], ["restaurant_id", 1], ["date", "2017-5-12"], ["time", "16:00"], ["review", "Awesome!"], ["points", 10]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "reservations"[0m
+  [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (3.4ms)[0m  [1m[35mCREATE TABLE "reservations" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "restaurant_id" integer, "date" text, "time" text, "review" text, "points" integer DEFAULT 0, "canceled" boolean DEFAULT 'f')[0m
+  [1m[35m (0.6ms)[0m  [1m[34mselect sqlite_version(*)[0m
+  [1m[35m (2.0ms)[0m  [1m[35mCREATE  INDEX "index_reservations_on_restaurant_id" ON "reservations" ("restaurant_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_reservations_on_restaurant_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_reservations_on_restaurant_id' AND type='index'
+[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCREATE  INDEX "index_reservations_on_user_id" ON "reservations" ("user_id")[0m
+  [1m[35m (1.9ms)[0m  [1m[35mCREATE TABLE "restaurants" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" text, "city" text, "address" text, "dining_style" text, "cuisines" text, "price_range" text, "phone_number" text, "website" text, "description" text, "photo_url" text, "number_of_tables" integer DEFAULT 0)[0m
+  [1m[35m (1.5ms)[0m  [1m[35mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "username" text, "password" text, "first_name" text, "last_name" text, "email" text, "points" integer DEFAULT 0, "is_admin" boolean DEFAULT 'f')[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (1.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (0)[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", 2017-05-06 03:51:45 UTC], ["updated_at", 2017-05-06 03:51:45 UTC]]
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (3.5ms)[0m  [1m[35mCREATE TABLE "reservations" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "restaurant_id" integer, "date" text, "time" text, "review" text, "points" integer DEFAULT 0, "canceled" boolean DEFAULT 'f')[0m
+  [1m[35m (0.1ms)[0m  [1m[34mselect sqlite_version(*)[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE  INDEX "index_reservations_on_restaurant_id" ON "reservations" ("restaurant_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_reservations_on_restaurant_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_reservations_on_restaurant_id' AND type='index'
+[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCREATE  INDEX "index_reservations_on_user_id" ON "reservations" ("user_id")[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE TABLE "restaurants" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" text, "city" text, "address" text, "dining_style" text, "cuisines" text, "price_range" text, "phone_number" text, "website" text, "description" text, "photo_url" text, "number_of_tables" integer DEFAULT 0)[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "username" text, "password" text, "first_name" text, "last_name" text, "email" text, "points" integer DEFAULT 0, "is_admin" boolean DEFAULT 'f')[0m
+  [1m[35m (2.2ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (1.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (0)[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", 2017-05-06 03:51:45 UTC], ["updated_at", 2017-05-06 03:51:45 UTC]]
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mSQL (1.0ms)[0m  [1m[31mDELETE FROM "restaurants"[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "city", "address", "dining_style", "cuisines", "price_range", "phone_number", "website", "description", "photo_url", "number_of_tables") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Monteverde"], ["city", "Chicago"], ["address", "1020 W. Madison Chicago, IL 60607"], ["dining_style", "Casual Dining"], ["cuisines", "Italian"], ["price_range", "$30 and under"], ["phone_number", "(312) 888-3041"], ["website", "http://monteverdechicago.com/"], ["description", "Located in Chicago’s West Loop neighborhood, Monteverde is an Italian restaurant that blends the traditions of Italian culture and cooking with influences from Chef Sarah Grueneberg’s trips around the world, as well as her family heritage. Cooking with a traditional heart and a modern hand, Monteverde offers food that is soulful, surprising and filled with storytelling."], ["photo_url", "https://resizer.otstatic.com/v2/photos/large/24386856.jpg"], ["number_of_tables", 10]]
+  [1m[35m (1.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "city", "address", "dining_style", "cuisines", "price_range", "phone_number", "website", "description", "photo_url", "number_of_tables") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Riccardo Trattoria"], ["city", "Chicago"], ["address", "2119 N. Clark Street Chicago, IL 60614"], ["dining_style", "Casual Dining"], ["cuisines", "Italian"], ["price_range", "$30 and under"], ["phone_number", "(773) 549-0038"], ["website", "http://www.riccardotrattoria.com/index.htm"], ["description", "Riccardo started his career at a very young age in Milan's prestigious \"GIRARROSTO\" family owned. Then, in 1982 he moved to the United States and he opened the famous Sonny Bono's in Los Angeles. In 1987 he started to work with his cousin Roberto Ruggeri (owner of Bice's Venture), with him he opened Bice New York, Los Angeles and many others around the world."], ["photo_url", "https://ot-foodspotting-production.s3.amazonaws.com/reviews/91289/thumb_600.jpg"], ["number_of_tables", 8]]
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "restaurants"[0m
+  [1m[35mSQL (1.1ms)[0m  [1m[31mDELETE FROM "users"[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("username", "password", "first_name", "last_name", "email", "points", "is_admin") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["username", "mengwang"], ["password", "mengwang"], ["first_name", "Meng"], ["last_name", "Wang"], ["email", "mengwanguc@gmail.com"], ["points", 100], ["is_admin", true]]
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "users" ("username", "password", "first_name", "last_name", "email", "points") VALUES (?, ?, ?, ?, ?, ?)[0m  [["username", "userX"], ["password", "userX"], ["first_name", "Jack"], ["last_name", "Chen"], ["email", "guest@gmail.com"], ["points", 50]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "users"[0m
+  [1m[35mSQL (1.6ms)[0m  [1m[31mDELETE FROM "reservations"[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mRestaurant Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "restaurants" WHERE "restaurants"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "reservations" ("user_id", "restaurant_id", "date", "time", "review", "points") VALUES (?, ?, ?, ?, ?, ?)[0m  [["user_id", 2], ["restaurant_id", 1], ["date", "2017-5-10"], ["time", "11:00"], ["review", "The food is great!"], ["points", 5]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mRestaurant Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "restaurants" WHERE "restaurants"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "reservations" ("user_id", "restaurant_id", "date", "time", "review", "points") VALUES (?, ?, ?, ?, ?, ?)[0m  [["user_id", 2], ["restaurant_id", 2], ["date", "2017-5-12"], ["time", "16:00"], ["review", "Awesome!"], ["points", 10]]
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "reservations"[0m
+  [1m[36mReservation Load (0.2ms)[0m  [1m[34mSELECT "reservations".* FROM "reservations"[0m
+  [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants"[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mRestaurant Load (0.3ms)[0m  [1m[34mSELECT  "restaurants".* FROM "restaurants" ORDER BY "restaurants"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mReservation Load (0.3ms)[0m  [1m[34mSELECT  "reservations".* FROM "reservations" ORDER BY "reservations"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
