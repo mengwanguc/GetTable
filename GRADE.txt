@@ -1,0 +1,14 @@
+Milestone #1 Grade - mengwanguc
+
+Score: (10/10)
+
+Nice work!
+
+- Great job with the validations.
+
+- `Reservation belongs_to :flight`, I'm guessing should probably be `:restaurant`
+
+- Unless a column is going to potentially have a lot of characters (e.g., a user's personal bio), you
+should use the `string` column, instead of `text`.
+
+- Make sure to use the new Ruby Hash syntax: e.g., `presence: true` instead of `:presence => true`
