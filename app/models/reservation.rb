@@ -1,5 +1,5 @@
 class Reservation < ApplicationRecord
-  belongs_to :flight
+  belongs_to :restaurant
   belongs_to :user
 
   validates :user_id, presence: true, numericality: { only_integer: true }

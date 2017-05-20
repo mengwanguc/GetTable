@@ -1,0 +1,39 @@
+<div class="container">
+  <div class="row">
+    <div class="page-title">
+      <h1>
+          Reservations
+          <small class="pull-right mpaa">
+            <%= link_to "See valid reservations", "/reservations"%>
+          </small>
+      </h1>
+    </div>
+  </div>
+
+  <div class="row">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Restaurant</th>
+          <th>Date</th>
+          <th>Time</th>
+          <th>State</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% i = 1 %>
+        <% @reservations.each do |reservation| %>
+          <tr>
+            <td><%= i %></td>
+            <% i=i+1 %>
+            <td><%= reservation.restaurant.name %></td>
+            <td><%= reservation.date %></td>
+            <td><%= reservation.time %></td>
+            <td>canceled</a></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

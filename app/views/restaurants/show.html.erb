@@ -1,0 +1,91 @@
+<div class="container">
+
+  <div class="row">
+    <div class="col-sm-3">
+        <%= image_tag @restaurant.photo_url, size: '250x300', class: 'poster img-responsive' %>
+    </div>
+    <div class="col-sm-8 well">
+      <div class="page-title">
+        <h1>
+            <%= @restaurant.name %>
+            <small>(<%= @restaurant.cuisines %>)</small>
+            <small class="pull-right mpaa"><%= @restaurant.dining_style %></small>
+        </h1>
+
+        <p class="lead">
+          <%= @restaurant.price_range %>
+        </p>
+
+        <p><strong>Phone number:</strong>
+          <%= @restaurant.phone_number %>
+        </p>
+
+        <p><strong>Website:</strong>
+          <%= @restaurant.website %>
+        </p>
+
+        <p><strong>Address:</strong>
+          <%= @restaurant.address %>
+        </p>
+
+        <!-- reservation form  -->
+        <%= form_tag "/reservations" do %>
+          <p>
+            <%= date_field_tag "date", "2017-05-20" %>
+          </p>
+
+          <% times = []%>
+          <% hours = 11..22 %>
+          <% hours.each do |hour|%>
+            <% times.push("#{hour}:00") %>
+          <% end %>
+          <p>
+            <%= select_tag "time", options_for_select(times)%>
+          </p>
+
+          <%= hidden_field_tag "user_id", User.find_by(username: "mengwang").id %>
+          <%= hidden_field_tag "restaurant_id", @restaurant.id %>
+
+          <p>
+            <%= submit_tag "Make A Reservation", class: "btn btn-lg btn-primary" %>
+          </p>
+        <% end %>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- restaurant description -->
+  <div class="row">
+    <div class="col-sm-3">
+    </div>
+
+    <div class="col-sm-8 well">
+      <h3>About <%= @restaurant.name %></h3>
+      <hr>
+      <p> <%= @restaurant.description %> </p>
+    </div>
+
+  </div>
+
+  <!-- reviews -->
+  <div class="row">
+    <div class="col-sm-3">
+    </div>
+
+    <div class="col-sm-8 well">
+      <h3>Reviews</h3>
+      <hr>
+
+      <% @reservations.each do |reservation| %>
+        <p class="text-muted">
+          <%= reservation.user.username %> | <%= reservation.date %> <%= reservation.time %>
+        </p>
+        <p>
+          <%= reservation.review %>
+        </p>
+        <hr>
+      <% end %>
+    </div>
+  </div>
+</div>

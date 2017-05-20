@@ -1,9 +1,9 @@
 restaurants = [["Monteverde", "Chicago", "1020 W. Madison Chicago, IL 60607", "Italian", "Casual Dining",
                 "$30 and under", "(312) 888-3041", "http://monteverdechicago.com/", "Located in Chicago\’s West Loop neighborhood, Monteverde is an Italian restaurant that blends the traditions of Italian culture and cooking with influences from Chef Sarah Grueneberg’s trips around the world, as well as her family heritage. Cooking with a traditional heart and a modern hand, Monteverde offers food that is soulful, surprising and filled with storytelling.",
-                "https://resizer.otstatic.com/v2/photos/large/24386856.jpg", 10],
+                "https://resizer.otstatic.com/v2/profiles/legacy/188881.jpg", 10],
                ["Riccardo Trattoria", "Chicago", "2119 N. Clark Street Chicago, IL 60614", "Italian", "Casual Dining",
                  "$30 and under", "(773) 549-0038", "http://www.riccardotrattoria.com/index.htm", "Riccardo started his career at a very young age in Milan\'s prestigious \"GIRARROSTO\" family owned. Then, in 1982 he moved to the United States and he opened the famous Sonny Bono\'s in Los Angeles. In 1987 he started to work with his cousin Roberto Ruggeri (owner of Bice\'s Venture), with him he opened Bice New York, Los Angeles and many others around the world.",
-                 "https://ot-foodspotting-production.s3.amazonaws.com/reviews/91289/thumb_600.jpg", 8]]
+                 "https://resizer.otstatic.com/v2/profiles/legacy/36700.jpg", 8]]
 
 Restaurant.delete_all
 restaurants.each do |entry|
@@ -46,8 +46,14 @@ puts "There are now #{User.count} users"
 
 
 
-reservations_data = [["2017-5-10", "11:00", "The food is great!", 5, false],
-                     ["2017-5-12", "16:00", "Awesome!", 10, false]]
+reservations_data = [["2017-05-10", "11:00", "The food is great!", 5, false],
+                     ["2017-05-12", "16:00", "Awesome!", 10, false],
+                     ["2017-05-13", "12:00", "Well its really excellent experience!", 5, false],
+                     ["2017-05-15", "16:00", "The food is just so so!", 10, false],
+                     ["2017-05-14", "16:00", "I like it! its really good!", 10, false],
+                     ["2017-05-17", "16:00", "I will recommend it to my friends. Really nice!", 10, false],
+                     ["2017-05-20", "16:00", "Best food in the world!", 10, false],
+                     ["2017-05-21", "16:00", "nice food!", 10, false]]
 Reservation.delete_all
 reservations_data.each do |entry|
   reservation = Reservation.new

@@ -1,0 +1,39 @@
+<div class="container">
+  <div class="row">
+    <div class="page-title">
+      <h1>
+          Reservations
+          <small class="pull-right mpaa">
+            <%= link_to "See canceled reservations", "/reservations/canceled"%>
+          </small>
+      </h1>
+    </div>
+  </div>
+
+  <div class="row">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Restaurant</th>
+          <th>Date</th>
+          <th>Time</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% i = 1 %>
+        <% @reservations.each do |reservation| %>
+          <tr>
+            <td><%= i %></td>
+            <% i=i+1 %>
+            <td><%= reservation.restaurant.name %></td>
+            <td><%= reservation.date %></td>
+            <td><%= reservation.time %></td>
+            <td><%= link_to "Cancel", "/reservations/#{reservation.id}", method: "delete", class: "btn btn-xs btn-warning" %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

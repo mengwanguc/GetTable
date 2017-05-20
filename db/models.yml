@@ -1,30 +1,30 @@
 Restaurant
-  name: text
-  city: text
+  name: string
+  city: string
   address: text
-  cuisines: text
-  dining_style: text
-  price_range: text
-  phone_number: text
-  website: text
+  cuisines: string
+  dining_style: string
+  price_range: string
+  phone_number: string
+  website: string
   description: text
   photo_url: text
   number_of_tables: integer(0)
 
 User
-  username: text
-  password: text
-  first_name: text
-  last_name: text
-  email: text
+  username: string
+  password: string
+  first_name: string
+  last_name: string
+  email: string
   points: integer(0)
   is_admin: boolean
 
 Reservation
   user_id: integer
   restaurant_id: integer
-  date: text
-  time: text
+  date: string
+  time: string
   review: text
   points: integer(0)
   canceled: boolean(false)
@@ -40,11 +40,11 @@ Reservation
 #   title: string
 #   author_id: integer
 #   price: integer
-#   summary: text
+#   summary: string
 #   hardcover: boolean
 #
 # Indent consistently!  Follow the above syntax exactly.
-# Typical column choices are: string, text, integer, boolean, date, time, and datetime.
+# Typical column choices are: string, string, integer, boolean, date, time, and datetime.
 #
 #
 # About Default Values
@@ -64,7 +64,7 @@ Reservation
 #   title
 #   author_id
 #   price: integer
-#   summary: text
+#   summary: string
 #   hardcover: boolean
 #
 # Complete details are in the README file online.

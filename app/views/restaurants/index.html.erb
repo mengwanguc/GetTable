@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="row">
+
+    <% @restaurants.each do |restaurant| %>
+
+      <!-- Draw the movie poster with the title underneath -->
+      <div class="col-sm-3">
+        <div class="thumbnail">
+          <a href="/restaurants/<%= restaurant.id %>">
+            <%= image_tag restaurant.photo_url, class: 'poster img-responsive' %>
+          </a>
+
+          <div class="caption text-center">
+            <h3>
+              <a href="/restaurants/<%= restaurant.id %>">
+                <%= restaurant.name %>
+              </a>
+            </h3>
+            <p>
+              <%= restaurant.cuisines %> | <%= restaurant.price_range %>
+            </p>
+          </div>
+        </div>
+      </div>
+    <% end %>
+
+  </div>
+</div>
