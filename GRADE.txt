@@ -12,3 +12,16 @@ Nice work!
 should use the `string` column, instead of `text`.
 
 - Make sure to use the new Ruby Hash syntax: e.g., `presence: true` instead of `:presence => true`
+
+------
+
+Milestone #2 Grade
+
+Score: (10/10)
+
+- It seems like your app is querying only for reservations for a specific user (e.g., `@reservations = User.find_by(username: "mengwang").reservations.where(canceled: false)`).
+Make sure these queries work for all users.
+
+- To follow Rails conventions, methods named `delete` should instead be named `destroy`
+
+- Missing `has_secure_password` on `User` model.
