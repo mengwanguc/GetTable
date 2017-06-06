@@ -26,8 +26,9 @@ puts "There are now #{Restaurant.count} restaurants"
 
 
 
-users = [["mengwang", "mengwang", "Meng", "Wang", "mengwanguc@gmail.com", 100, true],
-         ["userX", "userX", "Jack", "Chen", "guest@gmail.com", 50, false]]
+users = [["mengwang", "mengwang", "Meng", "Wang", "mengwanguc@gmail.com", 100, false],
+         ["userX", "userX", "Jack", "Chen", "guest@gmail.com", 50, false],
+         ["admin", "admin", "admin", "admin", "admin@gmail.com", 0, true]]
 
 User.delete_all
 users.each do |entry|
@@ -46,24 +47,30 @@ puts "There are now #{User.count} users"
 
 
 
-reservations_data = [["2017-05-10", "11:00", "The food is great!", 5, false],
-                     ["2017-05-12", "16:00", "Awesome!", 10, false],
-                     ["2017-05-13", "12:00", "Well its really excellent experience!", 5, false],
-                     ["2017-05-15", "16:00", "The food is just so so!", 10, false],
-                     ["2017-05-14", "16:00", "I like it! its really good!", 10, false],
-                     ["2017-05-17", "16:00", "I will recommend it to my friends. Really nice!", 10, false],
-                     ["2017-05-20", "16:00", "Best food in the world!", 10, false],
-                     ["2017-05-21", "16:00", "nice food!", 10, false]]
+reservations_data = [["11:00", "The food is great!", 3, false],
+                     ["16:00", "Awesome!", 1, false],
+                     ["12:00", "Well its really excellent experience!", 3, false],
+                     ["16:00", "The food is just so so!", 1, false],
+                     ["16:00", "I like it! its really good!", 2, false],
+                     ["16:00", "I will recommend it to my friends. Really nice!", 3, false],
+                     ["16:00", "Best food in the world!", 1, false],
+                     ["16:00", "nice food!", 1, false]]
 Reservation.delete_all
 reservations_data.each do |entry|
   reservation = Reservation.new
-  reservation.user_id = User.sample.id
+  sample_user = User.sample
+  loop do
+    sample_user = User.sample
+    break unless sample_user.username == "admin"
+  end
+  reservation.user_id = sample_user.id
   reservation.restaurant_id = Restaurant.sample.id
-  reservation.date = entry[0]
-  reservation.time = entry[1]
-  reservation.review = entry[2]
-  reservation.points = entry[3]
-  reservation.canceled = entry[4]
+  indexes = [1,2,3,4,5,6,7]
+  reservation.date = (Date.today-indexes.sample).to_s
+  reservation.time = entry[0]
+  reservation.review = entry[1]
+  reservation.tables = entry[2]
+  reservation.canceled = entry[3]
   reservation.save
 end
 

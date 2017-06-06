@@ -15,37 +15,37 @@ ActiveRecord::Schema.define(version: 0) do
   create_table "reservations", force: :cascade do |t|
     t.integer "user_id"
     t.integer "restaurant_id"
-    t.text    "date"
-    t.text    "time"
+    t.string  "date"
+    t.string  "time"
     t.text    "review"
-    t.integer "points",        default: 0
     t.boolean "canceled",      default: false
+    t.integer "tables",        default: 0
     t.index ["restaurant_id"], name: "index_reservations_on_restaurant_id"
     t.index ["user_id"], name: "index_reservations_on_user_id"
   end
 
   create_table "restaurants", force: :cascade do |t|
-    t.text    "name"
-    t.text    "city"
+    t.string  "name"
+    t.string  "city"
     t.text    "address"
-    t.text    "dining_style"
-    t.text    "cuisines"
-    t.text    "price_range"
-    t.text    "phone_number"
-    t.text    "website"
+    t.string  "dining_style"
+    t.string  "cuisines"
+    t.string  "price_range"
+    t.string  "phone_number"
+    t.string  "website"
     t.text    "description"
     t.text    "photo_url"
     t.integer "number_of_tables", default: 0
   end
 
   create_table "users", force: :cascade do |t|
-    t.text    "username"
-    t.text    "password"
-    t.text    "first_name"
-    t.text    "last_name"
-    t.text    "email"
-    t.integer "points",     default: 0
-    t.boolean "is_admin",   default: false
+    t.string  "username"
+    t.string  "first_name"
+    t.string  "last_name"
+    t.string  "email"
+    t.integer "points",          default: 0
+    t.boolean "is_admin",        default: false
+    t.string  "password_digest"
   end
 
 end

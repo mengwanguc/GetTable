@@ -1,0 +1,31 @@
+<div class="container">
+
+  <div class="page-header">
+    <h2>Write a review</h2>
+  </div>
+
+  <div class="row">
+    <div class="form-group col-md-1"></div>
+    <div class="form-group col-md-6">
+
+      <h3>Restaurant: <%= @restaurant.name %></h3>
+      <h4>Reservation Date: <%= @reservation.date %></h4>
+
+      <br>
+      <%= form_tag "/reservations/#{@reservation.id}/new_review" do %>
+        <p>
+          <%= label_tag "Review:" %>
+          <%= text_area_tag "review", @reservation.review, class: "form-control input-lg", rows: 10 %>
+        </p>
+
+
+        <br/>
+        <p>
+          <%= submit_tag "Submit", class: "btn btn-primary" %>
+        </p>
+
+      <% end %>
+
+    </div>
+  </div>
+</div>

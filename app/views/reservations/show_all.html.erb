@@ -1,0 +1,54 @@
+<div class="container">
+  <!-- upcoming reservations -->
+  <div class="row">
+    <div class="page-title">
+      <h1>
+          Reservations
+      </h1>
+    </div>
+  </div>
+
+  <div class="row">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Restaurant</th>
+          <th>User</th>
+          <th>Date</th>
+          <th>Time</th>
+          <th>Tables</th>
+          <th>State</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% i = 1 %>
+        <% @reservations.each do |reservation| %>
+          <tr>
+            <% current_hour = '%02d' % Time.now.hour %>
+              <td><%= i %></td>
+              <% i=i+1 %>
+              <td><%= reservation.restaurant.name %></td>
+              <td><%= reservation.user.username %></td>
+              <td><%= reservation.date %></td>
+              <td><%= reservation.time %></td>
+              <td><%= reservation.tables %></td>
+              <td>
+                <% if reservation.canceled == true %>
+                  canceled
+                <% else %>
+                  <% if (reservation.date > Date.today.to_s) || (reservation.date == Date.today.to_s) && reservation.time[0..1] > current_hour %>
+                    upcoming
+                  <% else %>
+                    done
+                  <% end %>
+                <% end %>
+              </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+
+
+</div>

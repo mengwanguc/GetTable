@@ -1,0 +1,44 @@
+<div class="container">
+
+  <div class="page-header">
+    <h1>
+        Statistics
+    </h1>
+  </div>
+
+  <!-- number of users -->
+  <% user_count = User.where(is_admin: false).count %>
+  <p class="text-success" style="font-size:20px;">Tinytable has <%= user_count %> users!</p>
+  <hr>
+
+  <!-- number of admins -->
+  <% admin_count = User.where(is_admin: true).count %>
+  <p class="text-primary" style="font-size:20px;">Tinytable has <%= admin_count %> admins!</p>
+  <hr>
+
+  <!-- user loyalty points count -->
+  <% points_data = [] %>
+  <% users = User.where(is_admin: false) %>
+  <% points_data.push(users.where("points <= 50").count) %>
+  <% points_data.push(users.where("points <= 200 and points > 50").count) %>
+  <% points_data.push(users.where("points >200").count) %>
+  <% points_labels = ["points<=50", "50<points<=200", "200<points"] %>
+  <%= image_tag((Gchart.pie :data => points_data, :labels => points_labels, :size => '695x380',
+               :theme => :thirty7signals, :title => "User points distribution"), class: "center-block") %>
+  <hr>
+
+  <!-- reservation numbers during the past week -->
+  <% reservations_data = [] %>
+  <% reservations_labels = [] %>
+  <% indexes = [7, 6, 5, 4, 3, 2, 1] %>
+  <% indexes.each do |i| %>
+    <% date = (Date.today - i).to_s %>
+    <% reservations_labels.push(date) %>
+    <% reservations_data.push(Reservation.where(date: date).count) %>
+  <% end %>
+  <%= image_tag((Gchart.line :data => reservations_data, :labels => reservations_labels, :size => '695x380',
+               :bar_colors => ['0088FF'], :bg => 'EFEFEF', :title => "Reservations during the past week",
+               :max_value => reservations_data.max,:min_value => 0), class: "center-block") %>
+
+
+</div>

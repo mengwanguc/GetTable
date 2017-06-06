@@ -1,8 +1,9 @@
 <div class="container">
+  <!-- upcoming reservations -->
   <div class="row">
     <div class="page-title">
       <h1>
-          Reservations
+          Upcoming Reservations
           <small class="pull-right mpaa">
             <%= link_to "See canceled reservations", "/reservations/canceled"%>
           </small>
@@ -18,6 +19,7 @@
           <th>Restaurant</th>
           <th>Date</th>
           <th>Time</th>
+          <th>Tables</th>
           <th></th>
         </tr>
       </thead>
@@ -25,15 +27,62 @@
         <% i = 1 %>
         <% @reservations.each do |reservation| %>
           <tr>
-            <td><%= i %></td>
-            <% i=i+1 %>
-            <td><%= reservation.restaurant.name %></td>
-            <td><%= reservation.date %></td>
-            <td><%= reservation.time %></td>
-            <td><%= link_to "Cancel", "/reservations/#{reservation.id}", method: "delete", class: "btn btn-xs btn-warning" %></td>
+            <% current_hour = '%02d' % Time.now.hour %>
+            <% if (reservation.date > Date.today.to_s) || (reservation.date == Date.today.to_s) && reservation.time[0..1] > current_hour %>
+              <td><%= i %></td>
+              <% i=i+1 %>
+              <td><%= reservation.restaurant.name %></td>
+              <td><%= reservation.date %></td>
+              <td><%= reservation.time %></td>
+              <td><%= reservation.tables %></td>
+              <td><%= link_to "Cancel", "/reservations/#{reservation.id}", method: "delete", class: "btn btn-xs btn-warning" %></td>
+            <% end %>
           </tr>
         <% end %>
       </tbody>
     </table>
   </div>
+
+
+<!-- past reservations -->
+  <div class="row">
+    <div class="page-title">
+      <h1>
+          Past Reservations
+      </h1>
+    </div>
+  </div>
+
+  <div class="row">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Restaurant</th>
+          <th>Date</th>
+          <th>Time</th>
+          <th>Tables</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% i = 1 %>
+        <% @reservations.each do |reservation| %>
+          <tr>
+            <% current_hour = '%02d' % Time.now.hour %>
+            <% unless (reservation.date > Date.today.to_s) || (reservation.date == Date.today.to_s) && reservation.time[0..1] > current_hour %>
+              <td><%= i %></td>
+              <% i=i+1 %>
+              <td><%= reservation.restaurant.name %></td>
+              <td><%= reservation.date %></td>
+              <td><%= reservation.time %></td>
+              <td><%= reservation.tables %></td>
+              <td><%= link_to "Write a review", "/reservations/#{reservation.id}/new_review", method: "get", class: "btn btn-xs btn-primary" %></td>
+            <% end %>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+
 </div>

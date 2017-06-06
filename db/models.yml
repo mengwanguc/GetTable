@@ -13,12 +13,12 @@ Restaurant
 
 User
   username: string
-  password: string
+  password_digest: string
   first_name: string
   last_name: string
   email: string
   points: integer(0)
-  is_admin: boolean
+  is_admin: boolean(false)
 
 Reservation
   user_id: integer
@@ -26,7 +26,7 @@ Reservation
   date: string
   time: string
   review: text
-  points: integer(0)
+  tables: integer(0)
   canceled: boolean(false)
 
 
