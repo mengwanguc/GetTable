@@ -54,7 +54,7 @@
 
             <% tables = 1..@restaurant.number_of_tables %>
             <p>
-              <%= select_tag "tables", options_for_select(tables)%>
+              <%= select_tag "tables", options_for_select(tables)%> &nbsp;&nbsp;tables
             </p>
 
             <%= hidden_field_tag "restaurant_id", @restaurant.id %>

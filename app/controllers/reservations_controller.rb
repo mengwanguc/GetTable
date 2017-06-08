@@ -21,6 +21,8 @@ class ReservationsController < ApplicationController
   def destroy
     reservation = Reservation.find_by(id: params['id'])
     reservation.update(canceled: true)
+    user = User.find_by(id: session["user_id"])
+    user.update(points: user.points - 10 * reservation.tables.to_i)
     redirect_to "/reservations"
   end
 
@@ -57,8 +59,7 @@ class ReservationsController < ApplicationController
           reservation.save
           # user gain points
           user = User.find_by(id: session["user_id"])
-          user.points = user.points + 10 * reservation.tables.to_i
-          user.save
+          user.update(points: user.points + 10 * params["tables"].to_i)
           redirect_to "/reservations"
         end
       end

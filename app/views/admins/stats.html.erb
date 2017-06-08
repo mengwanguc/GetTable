@@ -37,8 +37,7 @@
     <% reservations_data.push(Reservation.where(date: date).count) %>
   <% end %>
   <%= image_tag((Gchart.line :data => reservations_data, :labels => reservations_labels, :size => '695x380',
-               :bar_colors => ['0088FF'], :bg => 'EFEFEF', :title => "Reservations during the past week",
-               :max_value => reservations_data.max,:min_value => 0), class: "center-block") %>
-
+               :bar_colors => ['0088FF'], :bg => 'EFEFEF', :title => "Reservations vary during the past week"),
+               class: "center-block") %>
 
 </div>
