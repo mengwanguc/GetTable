@@ -1,3 +1,17 @@
+Final Grade
+
+Score: (30/30)
+
+Very well done!
+
+Notes: 
+
+1. Form validation errors should be properly formatted and easily readable to the user, instead of an array of strings.
+
+2. Users are unable to update their name or username, only email and password.
+
+-----
+
 Milestone #1 Grade - mengwanguc
 
 Score: (10/10)
